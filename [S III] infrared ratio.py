@@ -53,4 +53,22 @@ ax.set(
 )
 fig.savefig("siii-mir-density-ratio.pdf")
 
+temperatures = np.linspace(4000, 12000, 200)
+densities = np.linspace(0.0, 1000.0, 200)
+em33 = s3.getEmissivity(temperatures, densities, 2, 1)
+em18 = s3.getEmissivity(temperatures, densities, 3, 2)
+
+fig, ax = plt.subplots(figsize=(8, 8))
+cs = ax.contour(densities, temperatures, em18/em33, [0.7, 0.8, 0.9], cmap="Accent")
+ax.clabel(cs)
+ax.axhspan(7000, 8000, color="k", alpha=0.05)
+ax.set(
+    title="[S III] 18.71 $\mu$m / 33.47 $\mu$m",
+    xlabel="Density, $\mathrm{cm}^{-3}$",
+    ylabel="Temperature, K",    
+)
+fig.savefig("siii-mir-temden-contour-R08.pdf")
+
+ax.clabel?
+
 
